@@ -37,10 +37,12 @@ class CustomerRepositoryTest {
 //        customerRepository.save(customer1);
 
         Customer customer = new Customer();
-        customer.setName("테스");
-        ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("테", contains());
+        customer.setName("테스트1");
+        customer.setComment("테스트1 코멘트");
+        ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("의미없다", contains());
         Example<Customer> example = Example.of(customer, matcher);
-
+        System.out.println(matcher);
+        System.out.println(example);
         customerRepository.findAll(example).forEach(System.out::println);
     }
 }
