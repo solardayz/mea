@@ -19,7 +19,9 @@ public class CSController {
         return "test";
     }
 
+    @GetMapping("/cs/{id}")
     public Customer findById(@PathVariable Long id, Model model){
+        System.out.println(">>>>>>>>>>>"+id);
         return csService.findById(id);
     }
 }
