@@ -5,9 +5,7 @@ import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -17,6 +15,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
+import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.endsWith;
 
 @SpringBootTest
 class CustomerRepositoryTest {
@@ -64,8 +63,6 @@ class CustomerRepositoryTest {
         Customer customer = customerRepository.findById(1L).orElse(null);
         System.out.println(customer);
 
-
-
     }
 
     @Test
@@ -93,11 +90,116 @@ class CustomerRepositoryTest {
         List<Customer> customers = customerRepository.findAll();
 
         customers.forEach(System.out::println);
-        
 
 
     }
 
+    @Test
+    void flushTest(){
+        //플러시 테스트
+        Customer customer1 = Customer.builder()
+                .name("플러시테스트")
+                .email("flush@aaa.com")
+                .build();
+
+        customerRepository.save(customer1);
+
+        customerRepository.flush();
+
+        customerRepository.findAll().forEach(System.out::println);
+
+
+        //플러시 테스트2
+        Customer customer2 = Customer.builder()
+                .name("플러시테스트2")
+                .email("saveAllAndFlush@aaa.com")
+                .build();
+
+        customerRepository.saveAndFlush(customer2);
+        customerRepository.findAll().forEach(System.out::println);
+    }
+
+    @Test
+    void count(){
+        basicInsert();
+        long count = customerRepository.count();
+
+        System.out.println(count);
+
+        boolean exists = customerRepository.existsById(1L);
+
+        System.out.println(exists);
+
+    }
+
+    @Test
+    void delete(){
+        basicInsert();
+
+        customerRepository.delete(customerRepository.findById(1L).orElseThrow(()->new RuntimeException()));
+        //customerRepository.delete(customerRepository.findById(1L).orElseThrow(RuntimeException::new));
+
+        customerRepository.deleteById(2L);
+        customerRepository.findAll().forEach(System.out::println);
+
+        customerRepository.deleteInBatch(customerRepository.findAllById(Lists.newArrayList(4L,5L)));
+        customerRepository.findAll().forEach(System.out::println);
+
+        customerRepository.deleteAllInBatch();
+        //customerRepository.deleteAll();
+        customerRepository.findAll().forEach(System.out::println);
+    }
+
+    @Test
+    void page(){
+        basicInsert();
+        Page<Customer> customers = customerRepository.findAll(PageRequest.of(1,3));
+
+        System.out.println(customers);
+        System.out.println("getTotalPages : "+ customers.getTotalPages());
+        System.out.println("getTotalElements : "+ customers.getTotalElements());
+        System.out.println("getNumberOfElements : "+ customers.getNumberOfElements());
+        System.out.println("getSort : "+ customers.getSort());
+        System.out.println("getSize : "+ customers.getSize());
+    }
+
+    @Test
+    void cbe(){
+        basicInsert();
+        customerRepository.findAll().forEach(System.out::println);
+
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withIgnorePaths("name")
+                .withMatcher("email", endsWith());
+
+        Customer customer = Customer.builder()
+                .name("juna")
+                .email("cha.com")
+                .build();
+
+        Example<Customer> example = Example.of(customer, matcher);
+        customerRepository.findAll(example).forEach(System.out::println);
+
+        ExampleMatcher matcher1 = ExampleMatcher.matching()
+//                .withIgnorePaths("name")
+                .withMatcher("email", endsWith());
+
+        Customer customer1 = Customer.builder()
+                .name("juna")
+                .email("clc.com")
+                .build();
+        //Example<Customer> example1 = Example.of(customer1);
+        Example<Customer> example1 = Example.of(customer1, matcher1);
+        customerRepository.findAll(example1).forEach(System.out::println);
+
+
+        Customer customer2 = new Customer();
+        customer2.setEmail("clc");
+
+        ExampleMatcher matcher2 = ExampleMatcher.matching().withMatcher("email", contains());
+        Example<Customer> example2 = Example.of(customer2, matcher2);
+        customerRepository.findAll(example2).forEach(System.out::println);
+    }
 
     @Test
     void crud(){
@@ -176,7 +278,7 @@ class CustomerRepositoryTest {
         Customer customer3 = Customer.builder()
                 .name("euna")
                 .comment("USER")
-                .email("euna@clc.com")
+                .email("euna@cha.com")
                 .createAt(LocalDateTime.now())
                 .updateAt(LocalDateTime.now())
                 .build();
@@ -184,7 +286,7 @@ class CustomerRepositoryTest {
         Customer customer4 = Customer.builder()
                 .name("buna")
                 .comment("USER")
-                .email("buna@clc.com")
+                .email("buna@cha.com")
                 .createAt(LocalDateTime.now())
                 .updateAt(LocalDateTime.now())
                 .build();
