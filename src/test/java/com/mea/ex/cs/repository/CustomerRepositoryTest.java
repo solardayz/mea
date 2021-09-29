@@ -70,4 +70,9 @@ class CustomerRepositoryTest {
         System.out.println("findTop2ByName >"+customerRepository.findTop2ByName("테스"));
         System.out.println("findLast1ByName >"+customerRepository.findLast1ByName("테"));
     }
+
+    @Test
+    void queryMethod(){
+        System.out.println("findByEmailAndName : "+customerRepository.findByEmailAndName("juna@aa.com", "juna"));
+    }
 }
