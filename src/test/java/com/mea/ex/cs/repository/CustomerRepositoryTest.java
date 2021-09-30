@@ -258,6 +258,46 @@ class CustomerRepositoryTest {
     }
 
     @Test
+    void queryMethod2(){
+        basicInsert();
+        System.out.println("findByEmailAndName ::::: "+customerRepository.findByEmailAndName("juna@clc.com", "auna"));
+        System.out.println("findByEmailOrName ::::: "+customerRepository.findByEmailOrName("juna@clc.com", "auna"));
+        System.out.println("findByCreateAtAfter :::::: "+customerRepository.findByCreateAtAfter(LocalDateTime.now().minusDays(-1L)));
+        System.out.println("findByCreateAtGreaterThan ::::: "+customerRepository.findByCreateAtGreaterThan(LocalDateTime.now().minusDays(-1L)));
+        System.out.println("findByIdAfter ::::: "+customerRepository.findByIdAfter(3L));
+        System.out.println("findByCreateAtGreaterThanEqual : "+customerRepository.findByCreateAtGreaterThanEqual(LocalDateTime.now().minusDays(-2L)));
+        System.out.println("findByCreateAtBetween ::::: "+customerRepository.findByCreateAtBetween(LocalDateTime.now().minusDays(-2L), LocalDateTime.now().plusDays(1L)));
+        System.out.println("findByCreateAtBetween ::::: "+customerRepository.findByCreateAtBetween(LocalDateTime.now().minusDays(-2L), LocalDateTime.now().plusDays(1L)));
+
+        System.out.println("findByIdBetween ::::: "+customerRepository.findByIdBetween(2L, 3L));
+        System.out.println("findByIdGreaterThanEqualAndIdLessThanEqual ::::: "+customerRepository.findByIdGreaterThanEqualAndIdLessThanEqual(1L, 3L));
+        System.out.println("findByIdIsNotNull ::::: "+customerRepository.findByIdIsNotNull());
+
+        System.out.println("findByNameIn ::::: "+customerRepository.findByNameIn(Lists.newArrayList("juna", "euna")));
+        System.out.println("findByNameStartingWith ::::: "+customerRepository.findByNameStartingWith("na"));
+        System.out.println("findByNameEndingWith ::::: "+customerRepository.findByNameEndingWith("na"));
+        System.out.println("findByNameContains ::::: "+customerRepository.findByNameContains("na"));
+        System.out.println("findByNameLike ::::: "+customerRepository.findByNameLike("na"));
+
+    }
+
+    @Test
+    void queryMethod3(){
+        basicInsert();
+
+        System.out.println("findTop1ByName ===============?"+ customerRepository.findTop1ByName("juna"));
+        System.out.println("findTop2ByName ===============?"+ customerRepository.findTop2ByName("juna"));
+        System.out.println("findTopByNameOrderByIdDesc ===============?"+ customerRepository.findTopByNameOrderByIdDesc("juna"));
+        System.out.println("findFirstByNameOrderByIdDescEmailAsc ===============?"+ customerRepository.findFirstByNameOrderByIdDescEmailAsc("juna"));
+        System.out.println("findFirstByName ===============?"+ customerRepository.findFirstByName("juna", Sort.by(Sort.Order.asc("comment"))));
+        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)).getTotalElements());
+        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)).getTotalPages());
+        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)).getContent());
+        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)).getNumberOfElements());
+        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2).first()));
+        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)));
+    }
+
     void basicInsert(){
         Customer customer1 = Customer.builder()
                 .name("juna")
@@ -299,12 +339,21 @@ class CustomerRepositoryTest {
                 .updateAt(LocalDateTime.now())
                 .build();
 
+
+        Customer customer6 = Customer.builder()
+                .name("juna")
+                .comment("USER")
+                .email("juna@clc.com")
+                .createAt(LocalDateTime.now())
+                .updateAt(LocalDateTime.now())
+                .build();
+
         customerRepository.save(customer1);
         customerRepository.save(customer2);
         customerRepository.save(customer3);
         customerRepository.save(customer4);
         customerRepository.save(customer5);
+        customerRepository.save(customer6);
 
-        //customerRepository.findAll().forEach(System.out::println);
     }
 }
