@@ -281,6 +281,18 @@ class CustomerRepositoryTest {
 
     }
 
+    @Test
+    void queryMethod3(){
+        basicInsert();
+
+        System.out.println("findTop1ByName ===============?"+ customerRepository.findTop1ByName("juna"));
+        System.out.println("findTop2ByName ===============?"+ customerRepository.findTop2ByName("juna"));
+        System.out.println("findTopByNameOrderByIdDesc ===============?"+ customerRepository.findTopByNameOrderByIdDesc("juna"));
+        System.out.println("findFirstByNameOrderByIdDescEmailAsc ===============?"+ customerRepository.findFirstByNameOrderByIdDescEmailAsc("juna"));
+        System.out.println("findFirstByName ===============?"+ customerRepository.findFirstByName("juna", Sort.by(Sort.Order.asc("comment"))));
+        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)));
+    }
+
     void basicInsert(){
         Customer customer1 = Customer.builder()
                 .name("juna")
@@ -322,11 +334,21 @@ class CustomerRepositoryTest {
                 .updateAt(LocalDateTime.now())
                 .build();
 
+
+        Customer customer6 = Customer.builder()
+                .name("juna")
+                .comment("USER")
+                .email("juna@clc.com")
+                .createAt(LocalDateTime.now())
+                .updateAt(LocalDateTime.now())
+                .build();
+
         customerRepository.save(customer1);
         customerRepository.save(customer2);
         customerRepository.save(customer3);
         customerRepository.save(customer4);
         customerRepository.save(customer5);
+        customerRepository.save(customer6);
 
     }
 }
