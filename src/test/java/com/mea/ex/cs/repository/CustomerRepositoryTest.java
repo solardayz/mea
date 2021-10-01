@@ -1,6 +1,7 @@
 package com.mea.ex.cs.repository;
 
 import com.mea.ex.cs.domain.Customer;
+import com.mea.ex.cs.domain.Role;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -298,10 +299,24 @@ class CustomerRepositoryTest {
         System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)));
     }
 
+    @Test
+    void entityTest(){
+        basicInsert();
+        Customer customer = customerRepository.findById(3L).orElseThrow(RuntimeException::new);
+        customer.setRole(Role.MANAGER);
+        customer.setUpdateAt(LocalDateTime.now().plusDays(1L));
+
+        customerRepository.save(customer);
+        System.out.println(customer.getRole());
+
+
+    }
+
     void basicInsert(){
         Customer customer1 = Customer.builder()
                 .name("juna")
                 .comment("BOSS")
+                .role(Role.BOSS)
                 .email("juna@clc.com")
                 .createAt(LocalDateTime.now())
                 .updateAt(LocalDateTime.now())
@@ -310,6 +325,7 @@ class CustomerRepositoryTest {
         Customer customer2 = Customer.builder()
                 .name("auna")
                 .comment("MANAGER")
+                .role(Role.MANAGER)
                 .email("auna@clc.com")
                 .createAt(LocalDateTime.now())
                 .updateAt(LocalDateTime.now())
@@ -318,6 +334,7 @@ class CustomerRepositoryTest {
         Customer customer3 = Customer.builder()
                 .name("euna")
                 .comment("USER")
+                .role(Role.USER)
                 .email("euna@cha.com")
                 .createAt(LocalDateTime.now())
                 .updateAt(LocalDateTime.now())
@@ -326,6 +343,7 @@ class CustomerRepositoryTest {
         Customer customer4 = Customer.builder()
                 .name("buna")
                 .comment("USER")
+                .role(Role.USER)
                 .email("buna@cha.com")
                 .createAt(LocalDateTime.now())
                 .updateAt(LocalDateTime.now())
@@ -334,6 +352,7 @@ class CustomerRepositoryTest {
         Customer customer5 = Customer.builder()
                 .name("quna")
                 .comment("USER")
+                .role(Role.USER)
                 .email("quna@clc.com")
                 .createAt(LocalDateTime.now())
                 .updateAt(LocalDateTime.now())
@@ -343,6 +362,7 @@ class CustomerRepositoryTest {
         Customer customer6 = Customer.builder()
                 .name("juna")
                 .comment("USER")
+                .role(Role.USER)
                 .email("juna@clc.com")
                 .createAt(LocalDateTime.now())
                 .updateAt(LocalDateTime.now())

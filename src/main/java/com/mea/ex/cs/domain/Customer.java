@@ -2,9 +2,7 @@ package com.mea.ex.cs.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -23,10 +21,15 @@ public class Customer {
 
     private String comment;
 
+//    @Enumerated(EnumType.STRING)
+    private Enum<Role> role;
+
     private String email;
 
+    @Column(updatable = false)
     private LocalDateTime createAt;
 
+    @Column(insertable = false)
     private LocalDateTime updateAt;
 
 }
