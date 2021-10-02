@@ -291,12 +291,13 @@ class CustomerRepositoryTest {
         System.out.println("findTopByNameOrderByIdDesc ===============?"+ customerRepository.findTopByNameOrderByIdDesc("juna"));
         System.out.println("findFirstByNameOrderByIdDescEmailAsc ===============?"+ customerRepository.findFirstByNameOrderByIdDescEmailAsc("juna"));
         System.out.println("findFirstByName ===============?"+ customerRepository.findFirstByName("juna", Sort.by(Sort.Order.asc("comment"))));
-        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)).getTotalElements());
-        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)).getTotalPages());
-        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)).getContent());
-        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)).getNumberOfElements());
-        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2).first()));
-        System.out.println("findByName ===============?"+ customerRepository.findByName("juna", PageRequest.of(1,2)));
+
+        System.out.println("findByName getTotalElements===============?"+ customerRepository.findByName("juna", PageRequest.of(0,2, Sort.by(Sort.Order.by("email")))).getTotalElements());
+        System.out.println("findByName getTotalPages===============?"+ customerRepository.findByName("juna", PageRequest.of(0,2)).getTotalPages());
+        System.out.println("findByName getContent===============?"+ customerRepository.findByName("juna", PageRequest.of(0,2)).getContent());
+        System.out.println("findByName getNumberOfElements===============?"+ customerRepository.findByName("juna", PageRequest.of(0,2)).getNumberOfElements());
+        System.out.println("findByName first===============?"+ customerRepository.findByName("juna", PageRequest.of(0,2).first()));
+        System.out.println("findByName PageRequest===============?"+ customerRepository.findByName("juna", PageRequest.of(0,2)));
     }
 
     @Test
