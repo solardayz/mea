@@ -308,9 +308,33 @@ class CustomerRepositoryTest {
 
         customerRepository.save(customer);
         System.out.println(customer.getRole());
-
-
     }
+
+    @Test
+    void listnerTest(){
+        Customer customer1 = Customer.builder()
+                .name("juna")
+                .comment("BOSS")
+                .role(Role.BOSS)
+                .email("juna@clc.com")
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
+                .build();
+
+        customerRepository.save(customer1);
+
+        System.out.println("customer1 ----------------->"+customer1.toString());
+
+        Customer customer2 = customerRepository.findById(1L).orElseThrow(RuntimeException::new);
+        customer2.setName("테스트");
+
+        customerRepository.save(customer2);
+
+        System.out.println("customer2 ----------------->"+customer2.toString());
+
+        customerRepository.deleteById(1L);
+    }
+
 
     void basicInsert(){
         Customer customer1 = Customer.builder()
