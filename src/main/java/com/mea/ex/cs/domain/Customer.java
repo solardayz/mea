@@ -6,7 +6,6 @@ import com.mea.ex.listener.CustomerEntityListener;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +18,8 @@ import java.time.LocalDateTime;
 public class Customer extends BaseEntity implements Auditable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customerId")
     private Long id;
 
     @NonNull
@@ -28,7 +28,7 @@ public class Customer extends BaseEntity implements Auditable {
     private String comment;
 
 //    @Enumerated(EnumType.STRING)
-    private Enum<Role> role;
+    private Enum<CustomerRole> role;
 
     private String email;
 

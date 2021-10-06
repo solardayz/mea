@@ -1,20 +1,17 @@
 package com.mea.ex.cs.repository;
 
 import com.mea.ex.cs.domain.Customer;
-import com.mea.ex.cs.domain.Role;
+import com.mea.ex.cs.domain.CustomerRole;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.*;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.endsWith;
 
@@ -303,7 +300,7 @@ class CustomerRepositoryTest {
     void entityTest(){
         basicInsert();
         Customer customer = customerRepository.findById(3L).orElseThrow(RuntimeException::new);
-        customer.setRole(Role.MANAGER);
+        customer.setRole(CustomerRole.MANAGER);
 //        customer.setUpdateAt(LocalDateTime.now().plusDays(1L));
 
         customerRepository.save(customer);
@@ -315,7 +312,7 @@ class CustomerRepositoryTest {
         Customer customer1 = Customer.builder()
                 .name("juna")
                 .comment("BOSS")
-                .role(Role.BOSS)
+                .role(CustomerRole.BOSS)
                 .email("juna@clc.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -341,7 +338,7 @@ class CustomerRepositoryTest {
         Customer customer1 = Customer.builder()
                 .name("juna")
                 .comment("BOSS")
-                .role(Role.BOSS)
+                .role(CustomerRole.BOSS)
                 .email("juna@clc.com")
                 .build();
 
@@ -361,7 +358,7 @@ class CustomerRepositoryTest {
         Customer customer1 = Customer.builder()
                 .name("juna")
                 .comment("BOSS")
-                .role(Role.BOSS)
+                .role(CustomerRole.BOSS)
                 .email("juna@clc.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -370,7 +367,7 @@ class CustomerRepositoryTest {
         Customer customer2 = Customer.builder()
                 .name("auna")
                 .comment("MANAGER")
-                .role(Role.MANAGER)
+                .role(CustomerRole.MANAGER)
                 .email("auna@clc.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -379,7 +376,7 @@ class CustomerRepositoryTest {
         Customer customer3 = Customer.builder()
                 .name("euna")
                 .comment("USER")
-                .role(Role.USER)
+                .role(CustomerRole.USER)
                 .email("euna@cha.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -388,7 +385,7 @@ class CustomerRepositoryTest {
         Customer customer4 = Customer.builder()
                 .name("buna")
                 .comment("USER")
-                .role(Role.USER)
+                .role(CustomerRole.USER)
                 .email("buna@cha.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -397,7 +394,7 @@ class CustomerRepositoryTest {
         Customer customer5 = Customer.builder()
                 .name("quna")
                 .comment("USER")
-                .role(Role.USER)
+                .role(CustomerRole.USER)
                 .email("quna@clc.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -407,7 +404,7 @@ class CustomerRepositoryTest {
         Customer customer6 = Customer.builder()
                 .name("juna")
                 .comment("USER")
-                .role(Role.USER)
+                .role(CustomerRole.USER)
                 .email("juna@clc.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())

@@ -1,6 +1,6 @@
 package com.mea.ex.cs.domain;
 
-public enum Role {
+public enum CustomerRole {
     BOSS,
     MANAGER,
     USER

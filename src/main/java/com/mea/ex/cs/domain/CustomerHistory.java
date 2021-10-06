@@ -2,13 +2,9 @@ package com.mea.ex.cs.domain;
 
 import com.mea.ex.listener.Auditable;
 import com.mea.ex.listener.BaseEntity;
-import com.mea.ex.listener.CustomerEntityListener;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,8 +14,9 @@ import javax.persistence.Id;
 @Entity
 //@EntityListeners(value = CustomerEntityListener.class)
 public class CustomerHistory extends BaseEntity implements Auditable {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
@@ -28,7 +25,7 @@ public class CustomerHistory extends BaseEntity implements Auditable {
     private String comment;
 
     //    @Enumerated(EnumType.STRING)
-    private Enum<Role> role;
+    private Enum<CustomerRole> role;
 
     private String email;
 }

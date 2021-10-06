@@ -1,11 +1,9 @@
 package com.mea.ex.test;
 
 import com.mea.ex.cs.domain.Customer;
-import com.mea.ex.cs.domain.Role;
+import com.mea.ex.cs.domain.CustomerRole;
 import com.mea.ex.cs.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.time.LocalDateTime;
 
 public class TestData {
 
@@ -16,7 +14,7 @@ public class TestData {
         Customer customer1 = Customer.builder()
                 .name("juna")
                 .comment("BOSS")
-                .role(Role.BOSS)
+                .role(CustomerRole.BOSS)
                 .email("juna@clc.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -25,7 +23,7 @@ public class TestData {
         Customer customer2 = Customer.builder()
                 .name("auna")
                 .comment("MANAGER")
-                .role(Role.MANAGER)
+                .role(CustomerRole.MANAGER)
                 .email("auna@clc.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -34,7 +32,7 @@ public class TestData {
         Customer customer3 = Customer.builder()
                 .name("euna")
                 .comment("USER")
-                .role(Role.USER)
+                .role(CustomerRole.USER)
                 .email("euna@cha.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -43,7 +41,7 @@ public class TestData {
         Customer customer4 = Customer.builder()
                 .name("buna")
                 .comment("USER")
-                .role(Role.USER)
+                .role(CustomerRole.USER)
                 .email("buna@cha.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -52,7 +50,7 @@ public class TestData {
         Customer customer5 = Customer.builder()
                 .name("quna")
                 .comment("USER")
-                .role(Role.USER)
+                .role(CustomerRole.USER)
                 .email("quna@clc.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
@@ -62,7 +60,7 @@ public class TestData {
         Customer customer6 = Customer.builder()
                 .name("juna")
                 .comment("USER")
-                .role(Role.USER)
+                .role(CustomerRole.USER)
                 .email("juna@clc.com")
 //                .createAt(LocalDateTime.now())
 //                .updateAt(LocalDateTime.now())
