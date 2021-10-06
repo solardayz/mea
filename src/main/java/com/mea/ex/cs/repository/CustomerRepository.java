@@ -41,15 +41,15 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     List<Customer> findByEmailOrName(String email, String name);
 
-    List<Customer> findByCreateAtAfter(LocalDateTime yesterday);
+    List<Customer> findByCreatedAtAfter(LocalDateTime yesterday);
 
     List<Customer> findByIdAfter(Long id);
 
-    List<Customer> findByCreateAtGreaterThan(LocalDateTime yesterday);
+    List<Customer> findByCreatedAtGreaterThan(LocalDateTime yesterday);
 
-    List<Customer> findByCreateAtGreaterThanEqual(LocalDateTime yesterday);
+    List<Customer> findByCreatedAtGreaterThanEqual(LocalDateTime yesterday);
 
-    List<Customer> findByCreateAtBetween(LocalDateTime yesterday, LocalDateTime tomorrow);
+    List<Customer> findByCreatedAtBetween(LocalDateTime yesterday, LocalDateTime tomorrow);
 
     List<Customer> findByIdBetween(Long id1, Long id2);
 

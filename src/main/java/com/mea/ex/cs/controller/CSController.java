@@ -19,8 +19,8 @@ public class CSController {
     @Autowired
     private CSService csService;
 
-    @Autowired
-    private TestData testData;
+//    @Autowired
+//    private TestData testData;
 
     @GetMapping("/test")
     public String test(){
@@ -29,7 +29,7 @@ public class CSController {
 
     @GetMapping("/cs/{id}")
     public Customer findById(@PathVariable Long id, Model model){
-        testData.basicInsert();
+//        testData.basicInsert();
         System.out.println(">>>>>>>>>>>"+id);
         return csService.findById(id);
     }

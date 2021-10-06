@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Persistent;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
-public class UserEntityListener {
+public class CustomerEntityListener {
 
     @PrePersist
     @PreUpdate

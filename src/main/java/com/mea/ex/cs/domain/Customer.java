@@ -1,10 +1,10 @@
 package com.mea.ex.cs.domain;
 
+import com.mea.ex.listener.Auditable;
 import com.mea.ex.listener.BaseEntity;
-import com.mea.ex.listener.UserEntityListener;
+import com.mea.ex.listener.CustomerEntityListener;
 import lombok.*;
 
-import javax.annotation.PreDestroy;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @Builder
 @Data
 @Entity
-@EntityListeners(value = {UserEntityListener.class})
-public class Customer extends BaseEntity {
+@EntityListeners(value = {CustomerEntityListener.class})
+public class Customer extends BaseEntity implements Auditable {
 
     @Id
     @GeneratedValue
@@ -30,11 +30,11 @@ public class Customer extends BaseEntity {
 
     private String email;
 
-//    @Column(updatable = false)
-//    private LocalDateTime createAt;
-//
-//    //@Column(insertable = false)
-//    private LocalDateTime updateAt;
+    @Column(updatable = false)
+    private LocalDateTime createAt;
+
+    //@Column(insertable = false)
+    private LocalDateTime updateAt;
 
 //    @PrePersist
 //    public void prePersist(){

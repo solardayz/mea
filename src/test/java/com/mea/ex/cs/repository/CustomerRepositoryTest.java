@@ -263,12 +263,12 @@ class CustomerRepositoryTest {
         basicInsert();
         System.out.println("findByEmailAndName ::::: "+customerRepository.findByEmailAndName("juna@clc.com", "auna"));
         System.out.println("findByEmailOrName ::::: "+customerRepository.findByEmailOrName("juna@clc.com", "auna"));
-        System.out.println("findByCreateAtAfter :::::: "+customerRepository.findByCreateAtAfter(LocalDateTime.now().minusDays(-1L)));
-        System.out.println("findByCreateAtGreaterThan ::::: "+customerRepository.findByCreateAtGreaterThan(LocalDateTime.now().minusDays(-1L)));
+        System.out.println("findByCreateAtAfter :::::: "+customerRepository.findByCreatedAtAfter(LocalDateTime.now().minusDays(-1L)));
+        System.out.println("findByCreateAtGreaterThan ::::: "+customerRepository.findByCreatedAtGreaterThan(LocalDateTime.now().minusDays(-1L)));
         System.out.println("findByIdAfter ::::: "+customerRepository.findByIdAfter(3L));
-        System.out.println("findByCreateAtGreaterThanEqual : "+customerRepository.findByCreateAtGreaterThanEqual(LocalDateTime.now().minusDays(-2L)));
-        System.out.println("findByCreateAtBetween ::::: "+customerRepository.findByCreateAtBetween(LocalDateTime.now().minusDays(-2L), LocalDateTime.now().plusDays(1L)));
-        System.out.println("findByCreateAtBetween ::::: "+customerRepository.findByCreateAtBetween(LocalDateTime.now().minusDays(-2L), LocalDateTime.now().plusDays(1L)));
+        System.out.println("findByCreateAtGreaterThanEqual : "+customerRepository.findByCreatedAtGreaterThanEqual(LocalDateTime.now().minusDays(-2L)));
+        System.out.println("findByCreateAtBetween ::::: "+customerRepository.findByCreatedAtBetween(LocalDateTime.now().minusDays(-2L), LocalDateTime.now().plusDays(1L)));
+        System.out.println("findByCreateAtBetween ::::: "+customerRepository.findByCreatedAtBetween(LocalDateTime.now().minusDays(-2L), LocalDateTime.now().plusDays(1L)));
 
         System.out.println("findByIdBetween ::::: "+customerRepository.findByIdBetween(2L, 3L));
         System.out.println("findByIdGreaterThanEqualAndIdLessThanEqual ::::: "+customerRepository.findByIdGreaterThanEqualAndIdLessThanEqual(1L, 3L));
@@ -335,6 +335,27 @@ class CustomerRepositoryTest {
         customerRepository.deleteById(1L);
     }
 
+    @Test
+    void listenerTest2(){
+//        basicInsert();
+        Customer customer1 = Customer.builder()
+                .name("juna")
+                .comment("BOSS")
+                .role(Role.BOSS)
+                .email("juna@clc.com")
+                .build();
+
+        customerRepository.save(customer1);
+
+        System.out.println(customer1.toString());
+
+        Customer customer = customerRepository.findById(2L).orElseThrow(RuntimeException::new);
+        customer.setName("test");
+
+        customerRepository.save(customer);
+
+        System.out.println(customer);
+    }
 
     void basicInsert(){
         Customer customer1 = Customer.builder()
