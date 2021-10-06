@@ -18,8 +18,8 @@ public class TestData {
                 .comment("BOSS")
                 .role(Role.BOSS)
                 .email("juna@clc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         Customer customer2 = Customer.builder()
@@ -27,8 +27,8 @@ public class TestData {
                 .comment("MANAGER")
                 .role(Role.MANAGER)
                 .email("auna@clc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         Customer customer3 = Customer.builder()
@@ -36,8 +36,8 @@ public class TestData {
                 .comment("USER")
                 .role(Role.USER)
                 .email("euna@cha.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         Customer customer4 = Customer.builder()
@@ -45,8 +45,8 @@ public class TestData {
                 .comment("USER")
                 .role(Role.USER)
                 .email("buna@cha.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         Customer customer5 = Customer.builder()
@@ -54,8 +54,8 @@ public class TestData {
                 .comment("USER")
                 .role(Role.USER)
                 .email("quna@clc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
 
@@ -64,8 +64,8 @@ public class TestData {
                 .comment("USER")
                 .role(Role.USER)
                 .email("juna@clc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         customerRepository.save(customer1);

@@ -74,16 +74,16 @@ class CustomerRepositoryTest {
                 .name("guna")
                 .comment("USER")
                 .email("guna@clc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         Customer customer2 = Customer.builder()
                 .name("puna")
                 .comment("USER")
                 .email("puna@clc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         customerRepository.saveAll(Lists.newArrayList(customer1, customer2));
@@ -209,22 +209,22 @@ class CustomerRepositoryTest {
         customer.setName("테스트1");
         customer.setComment("테스트1 코멘트");
         customer.setEmail("aa@aa.com");
-        customer.setCreateAt(LocalDateTime.now());
-        customer.setUpdateAt(LocalDateTime.now());
+//        customer.setCreateAt(LocalDateTime.now());
+//        customer.setUpdateAt(LocalDateTime.now());
 
         Customer customer1 = Customer.builder()
                 .name("테스트2")
                 .comment("테스트2 코멘트")
                 .email("bb@bb.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
         Customer customer2 = Customer.builder()
                 .name("테스트3")
                 .comment("테스트3 코멘트")
                 .email("cc@cc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         customerRepository.save(customer);
@@ -304,7 +304,7 @@ class CustomerRepositoryTest {
         basicInsert();
         Customer customer = customerRepository.findById(3L).orElseThrow(RuntimeException::new);
         customer.setRole(Role.MANAGER);
-        customer.setUpdateAt(LocalDateTime.now().plusDays(1L));
+//        customer.setUpdateAt(LocalDateTime.now().plusDays(1L));
 
         customerRepository.save(customer);
         System.out.println(customer.getRole());
@@ -342,8 +342,8 @@ class CustomerRepositoryTest {
                 .comment("BOSS")
                 .role(Role.BOSS)
                 .email("juna@clc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         Customer customer2 = Customer.builder()
@@ -351,8 +351,8 @@ class CustomerRepositoryTest {
                 .comment("MANAGER")
                 .role(Role.MANAGER)
                 .email("auna@clc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         Customer customer3 = Customer.builder()
@@ -360,8 +360,8 @@ class CustomerRepositoryTest {
                 .comment("USER")
                 .role(Role.USER)
                 .email("euna@cha.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         Customer customer4 = Customer.builder()
@@ -369,8 +369,8 @@ class CustomerRepositoryTest {
                 .comment("USER")
                 .role(Role.USER)
                 .email("buna@cha.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         Customer customer5 = Customer.builder()
@@ -378,8 +378,8 @@ class CustomerRepositoryTest {
                 .comment("USER")
                 .role(Role.USER)
                 .email("quna@clc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
 
@@ -388,8 +388,8 @@ class CustomerRepositoryTest {
                 .comment("USER")
                 .role(Role.USER)
                 .email("juna@clc.com")
-                .createAt(LocalDateTime.now())
-                .updateAt(LocalDateTime.now())
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
                 .build();
 
         customerRepository.save(customer1);

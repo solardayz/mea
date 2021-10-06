@@ -1,5 +1,7 @@
 package com.mea.ex.cs.domain;
 
+import com.mea.ex.listener.BaseEntity;
+import com.mea.ex.listener.UserEntityListener;
 import lombok.*;
 
 import javax.annotation.PreDestroy;
@@ -11,7 +13,8 @@ import java.time.LocalDateTime;
 @Builder
 @Data
 @Entity
-public class Customer {
+@EntityListeners(value = {UserEntityListener.class})
+public class Customer extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -27,39 +30,39 @@ public class Customer {
 
     private String email;
 
-    @Column(updatable = false)
-    private LocalDateTime createAt;
+//    @Column(updatable = false)
+//    private LocalDateTime createAt;
+//
+//    //@Column(insertable = false)
+//    private LocalDateTime updateAt;
 
-    //@Column(insertable = false)
-    private LocalDateTime updateAt;
-
-    @PrePersist
-    public void prePersist(){
-        this.createAt = LocalDateTime.now();
-        this.updateAt = LocalDateTime.now();
-        System.out.println("====================> prePersist"+this.updateAt);     //가장 많이 씀
-    }
-
-    @PostPersist
-    public void postPersist(){
-        System.out.println("====================> postPersist");
-    }
-
-    @PreUpdate
-    public void preUpdate(){
-        this.updateAt = LocalDateTime.now();
-        System.out.println("====================> PreUpdate"+this.updateAt);
-    }
-
-    @PreRemove
-    public void preRemove(){
-        System.out.println("====================> preRemove");
-    }
-
-    @PostRemove
-    public void postRemove(){
-        System.out.println("====================> postRemove");
-    }
+//    @PrePersist
+//    public void prePersist(){
+//        this.createAt = LocalDateTime.now();
+//        this.updateAt = LocalDateTime.now();
+//        System.out.println("====================> prePersist"+this.updateAt);     //가장 많이 씀
+//    }
+//
+//    @PostPersist
+//    public void postPersist(){
+//        System.out.println("====================> postPersist");
+//    }
+//
+//    @PreUpdate
+//    public void preUpdate(){
+//        this.updateAt = LocalDateTime.now();
+//        System.out.println("====================> PreUpdate"+this.updateAt);
+//    }
+//
+//    @PreRemove
+//    public void preRemove(){
+//        System.out.println("====================> preRemove");
+//    }
+//
+//    @PostRemove
+//    public void postRemove(){
+//        System.out.println("====================> postRemove");
+//    }
 
 //    @PrePersist
 //    @PreUpdate
