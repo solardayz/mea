@@ -346,7 +346,7 @@ class CustomerRepositoryTest {
 
         System.out.println(customer1.toString());
 
-        Customer customer = customerRepository.findById(2L).orElseThrow(RuntimeException::new);
+        Customer customer = customerRepository.findById(1L).orElseThrow(RuntimeException::new);
         customer.setName("test");
 
         customerRepository.save(customer);
