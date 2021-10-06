@@ -1,10 +1,9 @@
 package com.mea.ex.cs.domain;
 
+import com.mea.ex.listener.Auditable;
+import com.mea.ex.listener.BaseEntity;
 import com.mea.ex.listener.CustomerEntityListener;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -14,9 +13,11 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @Entity
-@EntityListeners(value = CustomerEntityListener.class)
-public class CustomerHistory {
+//@EntityListeners(value = CustomerEntityListener.class)
+public class CustomerHistory extends BaseEntity implements Auditable {
     @Id
     @GeneratedValue
     private Long id;

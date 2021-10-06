@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Data
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @EntityListeners(value = {CustomerEntityListener.class})
 public class Customer extends BaseEntity implements Auditable {

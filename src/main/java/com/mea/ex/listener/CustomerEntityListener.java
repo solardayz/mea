@@ -4,7 +4,6 @@ import com.mea.ex.cs.domain.Customer;
 import com.mea.ex.cs.domain.CustomerHistory;
 import com.mea.ex.cs.repository.CustomerHistoryRepository;
 import com.mea.ex.support.BeanUtils;
-import org.springframework.data.annotation.Persistent;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
