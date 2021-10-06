@@ -32,11 +32,11 @@ public class Customer extends BaseEntity implements Auditable {
 
     private String email;
 
-    @Column(updatable = false)
-    private LocalDateTime createAt;
-
-    //@Column(insertable = false)
-    private LocalDateTime updateAt;
+//    @Column(updatable = false)
+//    private LocalDateTime createdAt;
+//
+//    //@Column(insertable = false)
+//    private LocalDateTime updatedAt;
 
 //    @PrePersist
 //    public void prePersist(){
