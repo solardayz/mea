@@ -2,6 +2,7 @@ package com.mea.ex.cs.domain;
 
 import com.mea.ex.listener.Auditable;
 import com.mea.ex.listener.BaseEntity;
+import com.mea.ex.listener.CustomerEntityListener;
 import lombok.*;
 
 import javax.persistence.*;

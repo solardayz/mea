@@ -11,9 +11,14 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create
+      show-sql: true
+      open-in-view: true
     properties:
       hibernate:
         format_sql: true
+    jackson:
+      serialization:
+        fail-on-empty-beans: false
 logging:
   level:
     org.hibernate.SQL: debug

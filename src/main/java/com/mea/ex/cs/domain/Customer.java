@@ -19,7 +19,7 @@ public class Customer extends BaseEntity implements Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customerId")
+//    @Column(name = "customerId")
     private Long id;
 
     @NonNull

@@ -94,6 +94,7 @@ public class CSController {
     public Customer findById(@PathVariable Long id, Model model){
 
         System.out.println(">>>>>>>>>>>"+id);
+        System.out.println(csService.findById(id).toString());
         return csService.findById(id);
     }
 }
