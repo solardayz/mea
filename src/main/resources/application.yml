@@ -10,7 +10,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false
@@ -23,7 +23,7 @@ spring:
       fail-on-empty-beans: false
 
 
-# https://blog.naver.com/dudghks2814/222424737306 참고  
+# https://blog.naver.com/dudghks2814/222424737306 참고
 # jpa:
 #    database-platform: org.hibernate.dialect.H2Dialect
 #    hibernate:
