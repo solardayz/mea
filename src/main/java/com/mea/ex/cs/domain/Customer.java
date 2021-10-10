@@ -6,6 +6,8 @@ import com.mea.ex.listener.CustomerEntityListener;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +17,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @EntityListeners(value = {CustomerEntityListener.class})
-public class Customer extends BaseEntity implements Auditable {
+public class Customer extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +33,9 @@ public class Customer extends BaseEntity implements Auditable {
     private Enum<CustomerRole> role;
 
     private String email;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<CustomerHistory> customerHistoryList = new ArrayList<>();
 
 //    @Column(updatable = false)
 //    private LocalDateTime createdAt;

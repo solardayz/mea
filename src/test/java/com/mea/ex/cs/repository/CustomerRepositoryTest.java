@@ -1,6 +1,7 @@
 package com.mea.ex.cs.repository;
 
 import com.mea.ex.cs.domain.Customer;
+import com.mea.ex.cs.domain.CustomerHistory;
 import com.mea.ex.cs.domain.CustomerRole;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
@@ -352,6 +353,29 @@ class CustomerRepositoryTest {
         customerRepository.save(customer);
 
         System.out.println(customer);
+    }
+
+    @Test
+    void userHistoryTest(){
+
+        Customer customer1 = Customer.builder()
+                .name("juna")
+                .comment("BOSS")
+                .role(CustomerRole.BOSS)
+                .email("juna@clc.com")
+                .build();
+
+        customerRepository.save(customer1);
+
+        customer1.setName("test");
+        customerRepository.save(customer1);
+
+        customer1.setRole(CustomerRole.MANAGER);
+        customerRepository.save(customer1);
+
+        List<CustomerHistory> result = customerRepository.getByEmail("juna@clc.com").getCustomerHistoryList();
+
+        result.forEach(System.out::println);
     }
 
     void basicInsert(){

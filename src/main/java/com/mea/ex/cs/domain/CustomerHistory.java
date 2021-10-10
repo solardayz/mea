@@ -13,8 +13,7 @@ import javax.persistence.*;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-//@EntityListeners(value = CustomerEntityListener.class)
-public class CustomerHistory extends BaseEntity implements Auditable {
+public class CustomerHistory extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
