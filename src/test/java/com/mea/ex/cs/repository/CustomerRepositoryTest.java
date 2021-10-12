@@ -1,7 +1,6 @@
 package com.mea.ex.cs.repository;
 
 import com.mea.ex.cs.domain.Customer;
-import com.mea.ex.cs.domain.CustomerHistory;
 import com.mea.ex.cs.domain.CustomerRole;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
@@ -21,6 +20,9 @@ class CustomerRepositoryTest {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private CustomerHistoryRepository customerHistoryRepository;
 
     @Test
 //    @Transactional
@@ -375,7 +377,7 @@ class CustomerRepositoryTest {
 
         customerRepository.findAll().forEach(System.out::println);
 
-        customerRepository.getByEmail("juna@clc.com").getCustomerHistoryList().forEach(System.out::println);
+        customerHistoryRepository.findAll().forEach(System.out::println);
     }
 
     void basicInsert(){
