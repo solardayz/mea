@@ -29,8 +29,8 @@ public class Customer extends BaseEntity {
 
     private String comment;
 
-//    @Enumerated(EnumType.STRING)
-    private Enum<CustomerRole> role;
+    @Enumerated(EnumType.STRING)
+    private CustomerRole role;
 
     private String email;
 
