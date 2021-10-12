@@ -6,6 +6,7 @@ import com.mea.ex.cs.repository.CustomerHistoryRepository;
 import com.mea.ex.support.BeanUtils;
 
 import javax.persistence.PostPersist;
+import javax.persistence.PostUpdate;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
@@ -14,7 +15,7 @@ public class CustomerEntityListener {
 //    @PrePersist
 //    @PreUpdate
     @PostPersist
-    @PreUpdate
+    @PostUpdate
     public void prePersistAndPreUpdate(Object o){
         CustomerHistoryRepository customerHistoryRepository = BeanUtils.getBean(CustomerHistoryRepository.class);
 

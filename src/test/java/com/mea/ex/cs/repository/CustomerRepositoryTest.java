@@ -373,9 +373,9 @@ class CustomerRepositoryTest {
         customer1.setRole(CustomerRole.MANAGER);
         customerRepository.save(customer1);
 
-        List<CustomerHistory> result = customerRepository.getByEmail("juna@clc.com").getCustomerHistoryList();
+        customerRepository.findAll().forEach(System.out::println);
 
-        result.forEach(System.out::println);
+        customerRepository.getByEmail("juna@clc.com").getCustomerHistoryList().forEach(System.out::println);
     }
 
     void basicInsert(){
