@@ -6,6 +6,7 @@ import com.mea.ex.listener.CustomerEntityListener;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,8 +25,11 @@ public class CustomerHistory extends BaseEntity {
 
     private String comment;
 
-    //    @Enumerated(EnumType.STRING)
-    private Enum<CustomerRole> role;
+    @Column(name = "customer_id")
+    private Long customerId;
+
+    @Enumerated(EnumType.STRING)
+    private CustomerRole role;
 
     private String email;
 }

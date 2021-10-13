@@ -21,7 +21,7 @@ public class Customer extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "customerId")
+    @Column(name = "customerId")
     private Long id;
 
     @NonNull
@@ -35,6 +35,8 @@ public class Customer extends BaseEntity {
     private String email;
 
     @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id",insertable = false,updatable = false)
+//    @ToString.Exclude
     private List<CustomerHistory> customerHistoryList = new ArrayList<>();
 
 //    @Column(updatable = false)
