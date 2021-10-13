@@ -8,4 +8,7 @@ import java.util.List;
 public interface CustomerHistoryRepository extends JpaRepository<CustomerHistory, Long> {
 
 //    List<CustomerHistory> findByUserId(Long id);
+    List<CustomerHistory> findByCustomerId(Long id);
+
+    List<CustomerHistory> findByComment(String comment);
 }

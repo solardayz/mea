@@ -41,6 +41,8 @@ class CustomerHistoryRepositoryTest {
         customerHistoryList.forEach(System.out::println);
         //System.out.println(customerHistoryList);
         //customerHistoryRepository.findAll().forEach(System.out::println);
+        customerHistoryRepository.findByCustomerId(customer.getId()).forEach(System.out::println);
 
+        customerHistoryRepository.findByComment(customer.getComment()).forEach(System.out::println);
     }
 }
