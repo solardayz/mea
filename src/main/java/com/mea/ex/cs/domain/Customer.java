@@ -34,10 +34,14 @@ public class Customer extends BaseEntity {
 
     private String email;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id",insertable = false,updatable = false)
 //    @ToString.Exclude
     private List<CustomerHistory> customerHistoryList = new ArrayList<>();
+
+    void setCustomerHistory(List<CustomerHistory> customerHistoryList){
+        this.customerHistoryList = customerHistoryList;
+    }
 
 //    @Column(updatable = false)
 //    private LocalDateTime createdAt;

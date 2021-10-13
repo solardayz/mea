@@ -23,10 +23,11 @@ public class CustomerEntityListener {
 
         CustomerHistory customerHistory = new CustomerHistory();
         customerHistory.setName(customer.getName());
-        customerHistory.setCustomerId(customer.getId());
+//        customerHistory.setCustomerId(customer.getId());
         customerHistory.setEmail(customer.getEmail());
         customerHistory.setRole(customer.getRole());
         customerHistory.setComment(customer.getComment());
+        customerHistory.setCustomer(customer);
 
         customerHistoryRepository.save(customerHistory);
     }

@@ -25,11 +25,15 @@ public class CustomerHistory extends BaseEntity {
 
     private String comment;
 
-    @Column(name = "customer_id")
-    private Long customerId;
+//    @Column(name = "customer_id")
+//    private Long customerId;
 
     @Enumerated(EnumType.STRING)
     private CustomerRole role;
 
     private String email;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private Customer customer;
 }
