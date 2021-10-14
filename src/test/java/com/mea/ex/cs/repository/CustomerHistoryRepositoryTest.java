@@ -34,21 +34,39 @@ class CustomerHistoryRepositoryTest {
 
         customerRepository.save(customer);
 
-        customerRepository.findAll().forEach(System.out::println);
 
-        List<CustomerHistory> customerHistoryList= customerRepository.findByEmail("test@clc.com").getCustomerHistoryList();
+//        List<CustomerHistory> customerHistoryList= customerRepository.findByEmail("test@clc.com").getCustomerHistoryList();
 
-        customerHistoryList.forEach(System.out::println);
+//        customerHistoryList.forEach(System.out::println);
         //System.out.println(customerHistoryList);
         //customerHistoryRepository.findAll().forEach(System.out::println);
-        customerHistoryRepository.findByCustomerId(customer.getId()).forEach(System.out::println);
+//        customerHistoryRepository.findByCustomerId(customer.getId()).forEach(System.out::println);
 
-        customerHistoryRepository.findByComment(customer.getComment()).forEach(System.out::println);
+//        customerHistoryRepository.findByComment(customer.getComment()).forEach(System.out::println);
     }
 
     @Test
     @Transactional
     void nAndOneTest(){
+        baseInsert();
+        Customer customer = customerRepository.getById(1L);
+        System.out.println(customer);
+
+        List<CustomerHistory> customerHistory = customer.getCustomerHistoryList();
+        System.out.println(customerHistory);
+
+//        customerHistoryRepository.findAll().forEach(System.out::println);
+
+//        System.out.println(customerHistoryRepository.getById(1L).getCustomer());
+//        Customer customer1 = customerHistoryRepository.findAll().get(0).getCustomer();
+//        System.out.println(customer1);
+
+//        CustomerHistory customerHistory = customerHistoryRepository.getById(1L);
+    }
+
+    @Test
+    void baseInsert(){
+
         Customer customer = new Customer();
         customer.setName("테스트");
         customer.setComment("테스트 코멘트");
@@ -60,11 +78,7 @@ class CustomerHistoryRepositoryTest {
 
         customerRepository.save(customer);
 
-        System.out.println(customer.toString());
-
-//        customerHistoryRepository.findAll().forEach(System.out::println);
-//        System.out.println(customerHistoryRepository.getById(1L).getCustomer());
-//        Customer customer1 = customerHistoryRepository.findAll().get(0).getCustomer();
-//        System.out.println(customer1);
+        System.out.println(customer);
+        System.out.println(customer.getCustomerHistoryList());
     }
 }

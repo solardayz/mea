@@ -3,6 +3,7 @@ package com.mea.ex.listener;
 import com.mea.ex.cs.domain.Customer;
 import com.mea.ex.cs.domain.CustomerHistory;
 import com.mea.ex.cs.repository.CustomerHistoryRepository;
+import com.mea.ex.cs.repository.CustomerRepository;
 import com.mea.ex.support.BeanUtils;
 
 import javax.persistence.PostPersist;
@@ -18,17 +19,21 @@ public class CustomerEntityListener {
     @PostUpdate
     public void prePersistAndPreUpdate(Object o){
         CustomerHistoryRepository customerHistoryRepository = BeanUtils.getBean(CustomerHistoryRepository.class);
+        CustomerRepository customerRepository = BeanUtils.getBean(CustomerRepository.class);
 
         Customer customer = (Customer) o;
 
         CustomerHistory customerHistory = new CustomerHistory();
         customerHistory.setName(customer.getName());
-//        customerHistory.setCustomerId(customer.getId());
         customerHistory.setEmail(customer.getEmail());
         customerHistory.setRole(customer.getRole());
         customerHistory.setComment(customer.getComment());
         customerHistory.setCustomer(customer);
 
         customerHistoryRepository.save(customerHistory);
+
+        customer.addCustomerHistory(customerHistory);
+        customerRepository.save(customer);
+
     }
 }
