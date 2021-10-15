@@ -51,7 +51,7 @@ class CustomerHistoryRepositoryTest {
         Customer customer = customerRepository.getById(1L);
         customer.setComment("변경하였습니다.");
         customerRepository.save(customer);
-        System.out.println(customer);
+//        System.out.println(customer);
 
         customerHistoryRepository.findAll().forEach(System.out::println);
 

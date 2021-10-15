@@ -35,7 +35,7 @@ public class Customer extends BaseEntity {
 
     @OneToMany
 //    @ToString.Exclude
-//    @JoinColumn(name = "customerId",insertable = false,updatable = false)
+    @JoinColumn(name = "customerId",insertable = false,updatable = false)
     private List<CustomerHistory> customerHistoryList = new ArrayList<>();
 
     public void addCustomerHistory(CustomerHistory customerHistory){
