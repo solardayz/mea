@@ -10,6 +10,8 @@ import javax.persistence.PostPersist;
 import javax.persistence.PostUpdate;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerEntityListener {
 
@@ -19,7 +21,6 @@ public class CustomerEntityListener {
     @PostUpdate
     public void prePersistAndPreUpdate(Object o){
         CustomerHistoryRepository customerHistoryRepository = BeanUtils.getBean(CustomerHistoryRepository.class);
-        CustomerRepository customerRepository = BeanUtils.getBean(CustomerRepository.class);
 
         Customer customer = (Customer) o;
 
@@ -28,12 +29,11 @@ public class CustomerEntityListener {
         customerHistory.setEmail(customer.getEmail());
         customerHistory.setRole(customer.getRole());
         customerHistory.setComment(customer.getComment());
-        customerHistory.setCustomer(customer);
+//        customerHistory.setCustomer(customer);
 
         customerHistoryRepository.save(customerHistory);
 
         customer.addCustomerHistory(customerHistory);
-        customerRepository.save(customer);
 
     }
 }

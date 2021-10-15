@@ -1,6 +1,5 @@
 package com.mea.ex.cs.domain;
 
-import com.mea.ex.listener.Auditable;
 import com.mea.ex.listener.BaseEntity;
 import com.mea.ex.listener.CustomerEntityListener;
 import lombok.*;
@@ -34,13 +33,16 @@ public class Customer extends BaseEntity {
 
     private String email;
 
-    @OneToMany(mappedBy = "customer")
-    @ToString.Exclude
+    @OneToMany
+//    @ToString.Exclude
 //    @JoinColumn(name = "customerId",insertable = false,updatable = false)
     private List<CustomerHistory> customerHistoryList = new ArrayList<>();
 
     public void addCustomerHistory(CustomerHistory customerHistory){
-        this.customerHistoryList.add(customerHistory);
+        System.out.println(">>>>>>"+this.customerHistoryList);
+        if(this.customerHistoryList != null){
+            this.customerHistoryList.add(customerHistory);
+        }
     }
 //    @Column(updatable = false)
 //    private LocalDateTime createdAt;

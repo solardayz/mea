@@ -48,12 +48,15 @@ class CustomerHistoryRepositoryTest {
     @Test
     @Transactional
     void nAndOneTest(){
-        baseInsert();
         Customer customer = customerRepository.getById(1L);
+        customer.setComment("변경하였습니다.");
+        customerRepository.save(customer);
         System.out.println(customer);
 
-        List<CustomerHistory> customerHistory = customer.getCustomerHistoryList();
-        System.out.println(customerHistory);
+        customerHistoryRepository.findAll().forEach(System.out::println);
+
+//        List<CustomerHistory> customerHistory = customer.getCustomerHistoryList();
+//        System.out.println(customerHistory);
 
 //        customerHistoryRepository.findAll().forEach(System.out::println);
 
@@ -67,18 +70,66 @@ class CustomerHistoryRepositoryTest {
     @Test
     void baseInsert(){
 
-        Customer customer = new Customer();
-        customer.setName("테스트");
-        customer.setComment("테스트 코멘트");
-        customer.setRole(CustomerRole.BOSS);
-        customer.setEmail("test@clc.com");
-        customerRepository.save(customer);
+        Customer customer1 = Customer.builder()
+                .name("juna")
+                .comment("BOSS")
+                .role(CustomerRole.BOSS)
+                .email("juna@clc.com")
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
+                .build();
 
-        customer.setName("테스트1");
+//        Customer customer2 = Customer.builder()
+//                .name("auna")
+//                .comment("MANAGER")
+//                .role(CustomerRole.MANAGER)
+//                .email("auna@clc.com")
+////                .createAt(LocalDateTime.now())
+////                .updateAt(LocalDateTime.now())
+//                .build();
+//
+//        Customer customer3 = Customer.builder()
+//                .name("euna")
+//                .comment("USER")
+//                .role(CustomerRole.USER)
+//                .email("euna@cha.com")
+////                .createAt(LocalDateTime.now())
+////                .updateAt(LocalDateTime.now())
+//                .build();
+//
+//        Customer customer4 = Customer.builder()
+//                .name("buna")
+//                .comment("USER")
+//                .role(CustomerRole.USER)
+//                .email("buna@cha.com")
+////                .createAt(LocalDateTime.now())
+////                .updateAt(LocalDateTime.now())
+//                .build();
+//
+//        Customer customer5 = Customer.builder()
+//                .name("quna")
+//                .comment("USER")
+//                .role(CustomerRole.USER)
+//                .email("quna@clc.com")
+////                .createAt(LocalDateTime.now())
+////                .updateAt(LocalDateTime.now())
+//                .build();
+//
+//
+//        Customer customer6 = Customer.builder()
+//                .name("juna")
+//                .comment("USER")
+//                .role(CustomerRole.USER)
+//                .email("juna@clc.com")
+////                .createAt(LocalDateTime.now())
+////                .updateAt(LocalDateTime.now())
+//                .build();
 
-        customerRepository.save(customer);
-
-        System.out.println(customer);
-        System.out.println(customer.getCustomerHistoryList());
+        customerRepository.save(customer1);
+//        customerRepository.save(customer2);
+//        customerRepository.save(customer3);
+//        customerRepository.save(customer4);
+//        customerRepository.save(customer5);
+//        customerRepository.save(customer6);
     }
 }
