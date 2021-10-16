@@ -6,8 +6,9 @@ import com.mea.ex.cs.domain.CustomerRole;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,13 +46,16 @@ class CustomerHistoryRepositoryTest {
 //        customerHistoryRepository.findByComment(customer.getComment()).forEach(System.out::println);
     }
 
+    @Commit
     @Test
     @Transactional
     void nAndOneTest(){
         Customer customer = customerRepository.getById(1L);
         customer.setComment("변경하였습니다.");
         customerRepository.save(customer);
-//        System.out.println(customer);
+        System.out.println(customer);
+        customer.setComment("룰루랄라.");
+        customerRepository.save(customer);
 
         customerHistoryRepository.findAll().forEach(System.out::println);
 
@@ -67,7 +71,51 @@ class CustomerHistoryRepositoryTest {
 //        CustomerHistory customerHistory = customerHistoryRepository.getById(1L);
     }
 
+    @Commit
+    @Transactional
     @Test
+    void onetomanyDirection(){
+
+        Customer customer = Customer.builder()
+                .name("juna")
+                .comment("BOSS")
+                .role(CustomerRole.BOSS)
+                .email("juna@clc.com")
+                .build();
+        customerRepository.save(customer);
+
+        CustomerHistory customerHistory = new CustomerHistory();
+        customerHistory.setName(customer.getName());
+        customerHistory.setEmail(customer.getEmail());
+        customerHistory.setComment(customer.getComment());
+        customerHistory.setRole(customer.getRole());
+
+        customer.addCustomerHistory(customerHistory);
+
+        customerHistoryRepository.save(customerHistory);
+
+        customer.setComment("커멘트변경");
+        customerRepository.save(customer);
+
+
+        CustomerHistory customerHistory1 = new CustomerHistory();
+        customerHistory1.setName(customer.getName());
+        customerHistory1.setEmail(customer.getEmail());
+        customerHistory1.setComment(customer.getComment());
+        customerHistory1.setRole(customer.getRole());
+
+        customer.addCustomerHistory(customerHistory1);
+
+        customerHistoryRepository.save(customerHistory1);
+
+        System.out.println(customer);
+        customerHistoryRepository.findAll().forEach(System.out::println);
+
+    }
+
+    @Commit
+    @Test
+    @Transactional
     void baseInsert(){
 
         Customer customer1 = Customer.builder()
@@ -131,5 +179,8 @@ class CustomerHistoryRepositoryTest {
 //        customerRepository.save(customer4);
 //        customerRepository.save(customer5);
 //        customerRepository.save(customer6);
+
+        System.out.println(customer1.toString());
+        customerHistoryRepository.findAll().forEach(System.out::println);
     }
 }
