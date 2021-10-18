@@ -19,9 +19,9 @@ public class CustomerEntityListener {
 
 //    @PrePersist
 //    @PreUpdate
-//    @PostPersist
-//    @PostUpdate
-    public void prePersistAndPreUpdate(Object o){
+    @PostPersist
+    @PostUpdate
+    public void prePostsistAndPostUpdate(Object o){
         CustomerHistoryRepository customerHistoryRepository = BeanUtils.getBean(CustomerHistoryRepository.class);
 
 
@@ -34,8 +34,9 @@ public class CustomerEntityListener {
         customerHistory.setComment(customer.getComment());
 //        customerHistory.setCustomer(customer);
 
+//        customer.setCustomerHistoryList(Arrays.asList(customerHistory));
         customerHistoryRepository.save(customerHistory);
-        customer.setCustomerHistoryList(Arrays.asList(customerHistory));
+
 
     }
 }
