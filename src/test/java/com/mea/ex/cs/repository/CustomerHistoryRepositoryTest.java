@@ -47,7 +47,7 @@ class CustomerHistoryRepositoryTest {
     @Test
     void bothDireciotnOnetoMany(){
 //        baseInsert();
-        Customer customer = customerRepository.getById(1L);
+        Customer customer = customerRepository.getById(4L);
 
         customer.getCustomerHistoryList().forEach(System.out::println);
 

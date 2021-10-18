@@ -33,15 +33,15 @@ public class Customer extends BaseEntity {
 
     private String email;
 
-    @OneToMany(mappedBy = "customer")
-    @ToString.Exclude
-//    @OneToMany
-//    @JoinColumn(name = "customerId",insertable = false,updatable = false)
+//    @OneToMany(mappedBy = "customer")
+//    @ToString.Exclude
+    @OneToMany
+    @JoinColumn(name = "customerId",insertable = false,updatable = false)
     private List<CustomerHistory> customerHistoryList = new ArrayList<>();
 
     public void addCustomerHistory(CustomerHistory customerHistory){
         customerHistoryList.add(customerHistory);
-        customerHistory.setCustomer(this);
+//        customerHistory.setCustomer(this);
     }
 
 //    @Column(updatable = false)

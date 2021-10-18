@@ -30,9 +30,8 @@ public class CustomerEntityListener {
         customerHistory.setEmail(customer.getEmail());
         customerHistory.setRole(customer.getRole());
         customerHistory.setComment(customer.getComment());
-        System.out.println(customerHistory.toString());
 
-        customerHistory.setCustomer(customer);
+//        customerHistory.setCustomer(customer);
 //        System.out.println(customerHistory.toString());
 
         customer.setCustomerHistoryList(Arrays.asList(customerHistory));
