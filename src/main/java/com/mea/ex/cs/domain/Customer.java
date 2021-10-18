@@ -33,8 +33,9 @@ public class Customer extends BaseEntity {
 
     private String email;
 
-    @OneToMany
+//    @OneToMany(mappedBy = "customer")
 //    @ToString.Exclude
+    @OneToMany
     @JoinColumn(name = "customerId",insertable = false,updatable = false)
     private List<CustomerHistory> customerHistoryList = new ArrayList<>();
 

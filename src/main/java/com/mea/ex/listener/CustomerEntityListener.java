@@ -5,6 +5,7 @@ import com.mea.ex.cs.domain.CustomerHistory;
 import com.mea.ex.cs.repository.CustomerHistoryRepository;
 import com.mea.ex.cs.repository.CustomerRepository;
 import com.mea.ex.support.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.PostPersist;
 import javax.persistence.PostUpdate;
@@ -18,10 +19,11 @@ public class CustomerEntityListener {
 
 //    @PrePersist
 //    @PreUpdate
-    @PostPersist
-    @PostUpdate
+//    @PostPersist
+//    @PostUpdate
     public void prePersistAndPreUpdate(Object o){
         CustomerHistoryRepository customerHistoryRepository = BeanUtils.getBean(CustomerHistoryRepository.class);
+
 
         Customer customer = (Customer) o;
 
