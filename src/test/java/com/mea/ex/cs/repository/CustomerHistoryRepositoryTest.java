@@ -6,10 +6,7 @@ import com.mea.ex.cs.domain.CustomerRole;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-<<<<<<< HEAD
-=======
 import org.springframework.test.annotation.Commit;
->>>>>>> mea/main
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
@@ -50,57 +47,9 @@ class CustomerHistoryRepositoryTest {
     }
 
     @Commit
-    @Test
-<<<<<<< HEAD
-//    @Transactional
-     void nAndOneTest(){
-         Customer customer1 = Customer.builder()
-                 .name("juna")
-                 .comment("BOSS")
-                 .role(CustomerRole.BOSS)
-                 .email("juna@clc.com")
-//                .createAt(LocalDateTime.now())
-//                .updateAt(LocalDateTime.now())
-                 .build();
-         customerRepository.save(customer1);
-
-         System.out.println(customer1);
-
-//        customer.setComment("변경합니다.");
-//        customerRepository.save(customer);
-
-//        System.out.println(customer);
-=======
-    @Transactional
-    void nAndOneTest(){
-        Customer customer = customerRepository.getById(1L);
-        customer.setComment("변경하였습니다.");
-        customerRepository.save(customer);
-        System.out.println(customer);
-        customer.setComment("룰루랄라.");
-        customerRepository.save(customer);
->>>>>>> mea/main
-
-//        customerHistoryRepository.findAll().forEach(System.out::println);
-
-//        List<CustomerHistory> customerHistory = customer.getCustomerHistoryList();
-//        System.out.println(customerHistory);
-
-//        customerHistoryRepository.findAll().forEach(System.out::println);
-
-//        System.out.println(customerHistoryRepository.getById(1L).getCustomer());
-//        Customer customer1 = customerHistoryRepository.findAll().get(0).getCustomer();
-//        System.out.println(customer1);
-
-//        CustomerHistory customerHistory = customerHistoryRepository.getById(1L);
-    }
-
-    @Commit
     @Transactional
     @Test
-<<<<<<< HEAD
 //    @Transactional
-=======
     void onetomanyDirection(){
 
         Customer customer = Customer.builder()
@@ -117,7 +66,7 @@ class CustomerHistoryRepositoryTest {
         customerHistory.setComment(customer.getComment());
         customerHistory.setRole(customer.getRole());
 
-        customer.addCustomerHistory(customerHistory);
+//        customer.addCustomerHistory(customerHistory);
 
         customerHistoryRepository.save(customerHistory);
 
@@ -131,7 +80,7 @@ class CustomerHistoryRepositoryTest {
         customerHistory1.setComment(customer.getComment());
         customerHistory1.setRole(customer.getRole());
 
-        customer.addCustomerHistory(customerHistory1);
+//        customer.addCustomerHistory(customerHistory1);
 
         customerHistoryRepository.save(customerHistory1);
 
@@ -143,7 +92,6 @@ class CustomerHistoryRepositoryTest {
     @Commit
     @Test
     @Transactional
->>>>>>> mea/main
     void baseInsert(){
 
         Customer customer1 = Customer.builder()
