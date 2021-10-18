@@ -38,12 +38,6 @@ public class Customer extends BaseEntity {
     @JoinColumn(name = "customerId",insertable = false,updatable = false)
     private List<CustomerHistory> customerHistoryList = new ArrayList<>();
 
-    public void addCustomerHistory(CustomerHistory customerHistory){
-        System.out.println(">>>>>>"+this.customerHistoryList);
-        if(this.customerHistoryList != null){
-            this.customerHistoryList.add(customerHistory);
-        }
-    }
 //    @Column(updatable = false)
 //    private LocalDateTime createdAt;
 //

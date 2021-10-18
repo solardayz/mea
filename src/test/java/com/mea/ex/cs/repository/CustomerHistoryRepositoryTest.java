@@ -6,8 +6,8 @@ import com.mea.ex.cs.domain.CustomerRole;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,14 +46,26 @@ class CustomerHistoryRepositoryTest {
     }
 
     @Test
-    @Transactional
-    void nAndOneTest(){
-        Customer customer = customerRepository.getById(1L);
-        customer.setComment("변경하였습니다.");
-        customerRepository.save(customer);
+//    @Transactional
+     void nAndOneTest(){
+         Customer customer1 = Customer.builder()
+                 .name("juna")
+                 .comment("BOSS")
+                 .role(CustomerRole.BOSS)
+                 .email("juna@clc.com")
+//                .createAt(LocalDateTime.now())
+//                .updateAt(LocalDateTime.now())
+                 .build();
+         customerRepository.save(customer1);
+
+         System.out.println(customer1);
+
+//        customer.setComment("변경합니다.");
+//        customerRepository.save(customer);
+
 //        System.out.println(customer);
 
-        customerHistoryRepository.findAll().forEach(System.out::println);
+//        customerHistoryRepository.findAll().forEach(System.out::println);
 
 //        List<CustomerHistory> customerHistory = customer.getCustomerHistoryList();
 //        System.out.println(customerHistory);
@@ -68,6 +80,7 @@ class CustomerHistoryRepositoryTest {
     }
 
     @Test
+//    @Transactional
     void baseInsert(){
 
         Customer customer1 = Customer.builder()

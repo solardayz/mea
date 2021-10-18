@@ -11,6 +11,7 @@ import javax.persistence.PostUpdate;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CustomerEntityListener {
@@ -32,8 +33,7 @@ public class CustomerEntityListener {
 //        customerHistory.setCustomer(customer);
 
         customerHistoryRepository.save(customerHistory);
-
-        customer.addCustomerHistory(customerHistory);
+        customer.setCustomerHistoryList(Arrays.asList(customerHistory));
 
     }
 }
