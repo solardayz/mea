@@ -24,18 +24,20 @@ public class CustomerEntityListener {
     public void prePostsistAndPostUpdate(Object o){
         CustomerHistoryRepository customerHistoryRepository = BeanUtils.getBean(CustomerHistoryRepository.class);
 
-
         Customer customer = (Customer) o;
-
         CustomerHistory customerHistory = new CustomerHistory();
         customerHistory.setName(customer.getName());
         customerHistory.setEmail(customer.getEmail());
         customerHistory.setRole(customer.getRole());
         customerHistory.setComment(customer.getComment());
-//        customerHistory.setCustomer(customer);
+        System.out.println(customerHistory.toString());
 
-//        customer.setCustomerHistoryList(Arrays.asList(customerHistory));
+        customerHistory.setCustomer(customer);
+//        System.out.println(customerHistory.toString());
+
+        customer.setCustomerHistoryList(Arrays.asList(customerHistory));
         customerHistoryRepository.save(customerHistory);
+
 
 
     }

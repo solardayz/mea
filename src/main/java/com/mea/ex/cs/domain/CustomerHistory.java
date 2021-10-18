@@ -33,7 +33,8 @@ public class CustomerHistory extends BaseEntity {
 
     private String email;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "customerId", insertable = false, updatable = false)
-//    private Customer customer;
+//    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customerId")
+    private Customer customer;
 }

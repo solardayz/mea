@@ -9,10 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class CustomerHistoryRepositoryTest {
 
@@ -44,6 +40,18 @@ class CustomerHistoryRepositoryTest {
 //        customerHistoryRepository.findByCustomerId(customer.getId()).forEach(System.out::println);
 
 //        customerHistoryRepository.findByComment(customer.getComment()).forEach(System.out::println);
+    }
+
+    @Commit
+    @Transactional(readOnly = true)
+    @Test
+    void bothDireciotnOnetoMany(){
+//        baseInsert();
+        Customer customer = customerRepository.getById(1L);
+
+        customer.getCustomerHistoryList().forEach(System.out::println);
+
+
     }
 
     @Commit
@@ -156,7 +164,5 @@ class CustomerHistoryRepositoryTest {
 //        customerRepository.save(customer5);
 //        customerRepository.save(customer6);
 
-        System.out.println(customer1.toString());
-        customerHistoryRepository.findAll().forEach(System.out::println);
     }
 }
