@@ -26,7 +26,7 @@ public class CustomerHistory extends BaseEntity {
     private String comment;
 
 //    @Column(name = "customer_id")
-//    private Long customerId;
+    private Long customerId;
 
     @Enumerated(EnumType.STRING)
     private CustomerRole role;

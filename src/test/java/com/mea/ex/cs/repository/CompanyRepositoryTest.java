@@ -20,20 +20,40 @@ class CompanyRepositoryTest {
     private CompanyRepository companyRepository;
 
 
+
+    @Commit
+    @Transactional
     @Test
     void oToM(){
+
         Company company = Company.builder()
-                .name("회사1")
+                .name("회사2")
                 .build();
 
         Customer customer = new Customer();
-        customer.setName("고객1");
+        customer.setName("고객2");
         customer.setRole(CustomerRole.USER);
-        customer.setComment("테스트 고객");
+        customer.setComment("테스트 고객2");
+        customerRepository.save(customer);
 
+        company.addCustomer(customer);
 
         companyRepository.save(company);
 
-        customerRepository.save(customer);
+
+        System.out.println("getCustomerHistoryList>>>>"+customer.getCustomerHistoryList());
+
+
+        System.out.println(company.getCustomerList());
+    }
+
+    @Test
+//    @Transactional(readOnly = true)
+    void oToMSearchTest(){
+        Company company = companyRepository.getById(5L);
+        System.out.println(company.getCustomerList());
+
+        Customer customer = customerRepository.getById(5L);
+        System.out.println(customer.getCustomerHistoryList());
     }
 }

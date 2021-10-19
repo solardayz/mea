@@ -35,13 +35,16 @@ public class Customer extends BaseEntity {
 
 //    @OneToMany(mappedBy = "customer")
 //    @ToString.Exclude
+    @ToString.Exclude
     @OneToMany
     @JoinColumn(name = "customerId",insertable = false,updatable = false)
     private List<CustomerHistory> customerHistoryList = new ArrayList<>();
 
     public void addCustomerHistory(CustomerHistory customerHistory){
-        customerHistoryList.add(customerHistory);
-//        customerHistory.setCustomer(this);
+        if(this.customerHistoryList == null){
+            this.customerHistoryList = new ArrayList<>();
+        }
+        this.customerHistoryList.add(customerHistory);
     }
 
 //    @Column(updatable = false)
