@@ -48,10 +48,10 @@ class CompanyRepositoryTest {
     }
 
     @Test
-//    @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     void oToMSearchTest(){
         Company company = companyRepository.getById(5L);
-        System.out.println(company.getCustomerList());
+        System.out.println(company);
 
         Customer customer = customerRepository.getById(5L);
         System.out.println(customer.getCustomerHistoryList());
