@@ -34,7 +34,7 @@ public class CustomerEntityListener {
 //        customerHistory.setCustomer(customer);
 //        System.out.println(customerHistory.toString());
 
-        customer.setCustomerHistoryList(Arrays.asList(customerHistory));
+//        customer.setCustomerHistoryList(Arrays.asList(customerHistory));
         customerHistoryRepository.save(customerHistory);
 
 

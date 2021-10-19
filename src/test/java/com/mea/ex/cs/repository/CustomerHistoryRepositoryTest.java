@@ -49,7 +49,7 @@ class CustomerHistoryRepositoryTest {
 //        baseInsert();
         Customer customer = customerRepository.getById(4L);
 
-        customer.getCustomerHistoryList().forEach(System.out::println);
+//        customer.getCustomerHistoryList().forEach(System.out::println);
 
 
     }
